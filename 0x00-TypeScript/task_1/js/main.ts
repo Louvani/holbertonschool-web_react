@@ -20,9 +20,10 @@ function printTeacher(teacher: printTeacherFunction) {
   return `${teacher.firstName[0]}. ${teacher.lastName}`
 }
 
-interface studentClass {
-  firstName: string
-  lastName: string
+interface StudentClassInterface {
+  constuctor(firstName: string, lastName: string): void;
+  workOnHomework(): string;
+  displayName(): string;
 }
 
 class StudentClass {
@@ -34,30 +35,11 @@ class StudentClass {
     this.lastName = lastName;
   }
 
-  workOnHomework() {
+  workOnHomework(): string {
     return "Currently working";
   }
 
-  displayName() {
+  displayName(): string {
     return this.firstName
   }
 }
-
-// const teacher3: Teacher = {
-//   firstName: 'John',
-//   fullTimeEmployee: false,
-//   lastName: 'Doe',
-//   location: 'London',
-//   contract: false,
-// };
-
-// console.log(teacher3);
-
-// const director1: Directors = {
-//   firstName: 'John',
-//   lastName: 'Doe',
-//   location: 'London',
-//   fullTimeEmployee: true,
-//   numberOfReports: 17,
-// };
-// console.log(director1);
