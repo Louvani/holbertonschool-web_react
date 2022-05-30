@@ -8,12 +8,17 @@ const Notifications = () => {
     <div className='Notifications'>
       <button
         style={{
-          background: "transparent",
-          border: "none",
-          position: "absolute",
-          right: 20,
-        }}
-        aria-label="close"
+					background: 'none',
+					border: 'none',
+          position: 'absolute',
+					right: 20,
+					cursor: 'pointer',
+					outline: 'none',
+				}}
+				aria-label="Close"
+				onClick={(e) => {
+					console.log('Close button has been clicked');
+				}}
       >
         <img src={closeIcon} alt="close-icon" />
       </button>
