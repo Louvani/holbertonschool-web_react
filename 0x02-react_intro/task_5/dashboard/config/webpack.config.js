@@ -11,20 +11,17 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      // title: 'Holberton Dashboard',
+      template: './src/index.html',
     })
   ],
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: ["html-loader"]
-      },
       {
         test: /\.css$/,
         use: [
@@ -33,17 +30,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: { bypassOnDebug: true, disable: true },
-          },
-        ],
-      },
+				test: /\.(png|svg|jpg|jpeg|gif)$/,
+				type: 'asset/resource',
+				loader: 'image-webpack-loader',
+			},
       {
         test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         },
@@ -51,6 +44,8 @@ module.exports = {
     ]
   },
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    hot: true,
+    open: true,
+    contentBase: path.resolve(__dirname, '../dist'),
   },
 }
