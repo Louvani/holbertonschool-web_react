@@ -1,6 +1,6 @@
 import React from 'react';
-import './Header.css';
 import logo from '../assets/holberton_logo.jpg';
+import './Header.css';
 
 function Header() {
   return (
