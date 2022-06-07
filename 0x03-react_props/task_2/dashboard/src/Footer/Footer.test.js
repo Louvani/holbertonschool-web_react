@@ -7,7 +7,7 @@ import Footer from './Footer';
 configure({adapter: new Adapter()});
 
 describe("Testing the <Footer /> Component", () => {
-
+	
 	let wrapper;
 
 	beforeEach(() => {

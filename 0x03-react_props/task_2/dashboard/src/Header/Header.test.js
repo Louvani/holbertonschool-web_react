@@ -1,14 +1,13 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
-import Header from './Header';
-import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
+import Header from './Header';
 
-Enzyme.configure({ adapter: new Adapter() });
+configure({adapter: new Adapter()});
 
 describe("Testing the <Header /> Component", () => {
-
+	
 	let wrapper;
 
 	beforeEach(() => {

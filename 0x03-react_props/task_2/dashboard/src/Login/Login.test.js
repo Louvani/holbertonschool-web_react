@@ -7,7 +7,7 @@ import Login from './Login';
 configure({adapter: new Adapter()});
 
 describe("Testing the <Login /> Component", () => {
-
+	
 	let wrapper;
 
 	beforeEach(() => {

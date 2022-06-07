@@ -1,5 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
+import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
 import App from './App';
 import Header from '../Header/Header';
@@ -7,12 +8,10 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Notifications from '../Notifications/Notifications';
 
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-Enzyme.configure({ adapter: new Adapter() });
+configure({adapter: new Adapter()});
 
 describe("Testing the <App /> Component", () => {
+	
 	let wrapper;
 
 	beforeEach(() => {
