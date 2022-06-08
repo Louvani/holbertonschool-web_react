@@ -11,7 +11,6 @@ import Notifications from '../Notifications/Notifications';
 configure({adapter: new Adapter()});
 
 describe("Testing the <App /> Component", () => {
-	
 	let wrapper;
 
 	beforeEach(() => {
@@ -38,4 +37,16 @@ describe("Testing the <App /> Component", () => {
 		expect(wrapper.contains(<Footer />)).to.equal(true);
 	});
 
+});
+
+describe('loggin prop is true', () => {
+  it('should verify that login componenet in not rendered', () => {
+    const wrapper = shallow(<App isLoggedIn={true} />);
+    expect(wrapper.find('Login').length).toBe(0);
+  });
+
+  it('should verify that courseList componenet is rendered', () => {
+    const wrapper = shallow(<App isLoggedIn={true} />);
+    expect(wrapper.find('CourseList').length).toBe(1);
+  });
 });

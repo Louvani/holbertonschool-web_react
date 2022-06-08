@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 const NotificationItem = ({type, value, html}) => {
 	return (
@@ -17,5 +17,18 @@ const NotificationItem = ({type, value, html}) => {
 		</Fragment>
 	)
 }
+
+NotificationItem.propTypes = {
+  value: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  html: PropTypes.shape({
+		__html: PropTypes.string,
+	})
+};
+
+NotificationItem.defaultProps = {
+  type: 'default',
+};
+
 
 export default NotificationItem;

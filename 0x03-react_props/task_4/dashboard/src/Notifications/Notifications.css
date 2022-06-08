@@ -1,8 +1,11 @@
 .Notifications {
 	border: 2px dotted var(--holberton-red);
 	padding: 6px 12px;
-	position: relative;
-	margin-top: 12px;
+	position: absolute;
+	top: 25;
+	right: 0;
+	width: 35%;
+	font-size: 16px;
 }
 
 li[data-priority-type="default"] {
@@ -11,4 +14,9 @@ li[data-priority-type="default"] {
 
 li[data-priority-type="urgent"] {
 	color: red;
+}
+
+.menuItem {
+  text-align: right;
+  margin:15px;
 }
