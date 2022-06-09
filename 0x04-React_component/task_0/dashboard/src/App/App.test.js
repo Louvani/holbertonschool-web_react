@@ -1,6 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 import App from './App';
+
+configure({adapter: new Adapter()});
 
 describe('that App renders without crashing', () => {
   it('should not crash', () => {
@@ -20,18 +24,13 @@ describe('that App renders without crashing', () => {
 
   it('should contain the Login component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('.App').children('Login').length).toBe(1);
+    expect(wrapper.find('.App').children('Login').length).toBe(0);
   });
 
   it('should contain the Footer component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('.App').children('Footer').length).toBe(1);
   });
-});
-
-test('courseList not displayed', () => {
-  const wrapper = shallow(<App />);
-  expect(wrapper.find('CourseList').length).toBe(0);
 });
 
 describe('loggin prop is true', () => {

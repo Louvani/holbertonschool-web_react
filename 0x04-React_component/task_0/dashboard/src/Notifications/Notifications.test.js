@@ -20,15 +20,11 @@ describe("Testing the <Notifications /> Component", () => {
 	});
 
 	it("<Notifications /> renders three list items", () => {
-		expect(wrapper.find(NotificationItem)).to.have.lengthOf(3);
+		expect(wrapper.find(NotificationItem)).to.have.lengthOf(0);
 	});
 
-	it("<Notifications /> renders the first <NotificationItem /> element with the right HTML", () => {
-		expect(wrapper.find('ul').childAt(0).html()).to.equal('<li data-priority-type="default">New course available</li>');
-	});
-
-	it("<Notifications /> render the text 'Here is the list of notifications'", () => {
-		expect(wrapper.contains(<p>Here is the list of notifications</p>)).to.equal(true);
+	it("<Notifications /> render the text Your notifications", () => {
+		expect(wrapper.contains(<div className='menuItem'>Your notifications</div>)).to.equal(true);
 	});
 
 });

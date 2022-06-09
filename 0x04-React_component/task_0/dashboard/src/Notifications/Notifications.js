@@ -23,9 +23,7 @@ function Notifications({ displayDrawer, listNotifications }) {
 					onClick={() => console.log('Close button has been clicked')}>
 						<img src={closeIcon} alt="close-icon" />
 					</button>
-					<p>
-						Here is the list of notifications
-					</p>
+					<p>Here is the list of notifications</p>
 					<ul>
 						{listNotifications.length === 0 ? (
 							 <li>No new notification for now</li>

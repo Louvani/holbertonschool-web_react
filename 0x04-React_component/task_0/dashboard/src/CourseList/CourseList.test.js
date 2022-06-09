@@ -20,7 +20,7 @@ describe("Testing the <CourseList /> Component", () => {
 
 		let component = shallow(<CourseList shouldRender />);
 
-		expect(component.find(CourseListRow)).to.have.lengthOf(5);
+		expect(component.find(CourseListRow)).to.have.lengthOf(2);
 	});
 
 });
