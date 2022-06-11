@@ -1,24 +1,38 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const NotificationItem = ({type, value, html}) => {
-	return (
+class NotificationItem extends React.Component {
+	constructor(props) {
+		super(props);
+		this.markAsRead = this.props.markAsRead.bind(this);
+	}
+
+	render() {
+		return (
 		<Fragment>
 			{
-				html !== undefined &&
-				<li data-priority-type={type} dangerouslySetInnerHTML={html}/>
+				this.props.html !== undefined &&
+				<li
+					data-priority-type={this.props.type}
+					dangerouslySetInnerHTML={this.props.html}
+					onClick={() => this.markAsRead(this.props.id)}
+				/>
 			}
 			{
-				html === undefined &&
-				<li data-priority-type={type}>
-					{value}
+				this.props.html === undefined &&
+				<li
+					data-priority-type={this.props.type}
+					onClick={() => this.markAsRead(this.props.id)}>
+						{this.props.value}
 				</li>
 			}
 		</Fragment>
-	)
+	)}
 }
 
 NotificationItem.propTypes = {
+	markAsRead: PropTypes.func,
+	id: PropTypes.number,
   value: PropTypes.string,
   type: PropTypes.string.isRequired,
   html: PropTypes.shape({
@@ -28,6 +42,7 @@ NotificationItem.propTypes = {
 
 NotificationItem.defaultProps = {
   type: 'default',
+	markAsRead: function () {},
 };
 
 
