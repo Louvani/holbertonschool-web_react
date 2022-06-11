@@ -27,8 +27,9 @@ class App extends React.Component {
     super(props);
     this.onLogginOut = this.onLogginOut.bind(this);
   }
-  onLogginOut(e) {
-    if (e.ctrlKey && e.key === 'h') {
+
+  onLogginOut(event) {
+    if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
       this.props.logOut();
     }

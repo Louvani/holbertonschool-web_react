@@ -44,3 +44,23 @@ describe('loggin prop is true', () => {
     expect(wrapper.find('CourseList').length).toBe(1);
   });
 });
+
+test('verify that when the keys control and h are pressed the logOut function, passed as a prop, is called', () => {
+  const events = {};
+  const logout = jest.fn();
+
+  document.addEventListener = jest.fn((event, cb) => {
+    events[event] = cb;
+  });
+
+  window.alert = jest.fn();
+
+  shallow(<App logOut={logout} />);
+
+  events.keydown({ key: 'h', ctrlKey: true });
+
+  expect(alert).toHaveBeenCalledWith('Logging you out');
+  expect(logout).toHaveBeenCalled();
+
+  jest.restoreAllMocks();
+});
