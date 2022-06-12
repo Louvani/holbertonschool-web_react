@@ -7,6 +7,8 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
 
 import { getLatestNotification } from '../utils/utils';
 
@@ -50,7 +52,18 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <div className="App-body">
-            {this.props.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+            {this.props.isLoggedIn ? (
+            <BodySectionWithMarginBottom title="Course list">
+              <CourseList listCourses={listCourses} />
+            </BodySectionWithMarginBottom>
+            ) : (
+            <BodySectionWithMarginBottom title="Course list">
+              <Login />
+            </BodySectionWithMarginBottom>
+            )}
+            <BodySection title="News from the School">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat felis id tortor venenatis sollicitudin. Suspendisse at ipsum ac lectus semper ornare id finibus lorem. Praesent non mi eu diam pulvinar mollis. </p>
+            </BodySection>
           </div>
           <Footer />
         </div>
