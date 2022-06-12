@@ -6,6 +6,7 @@
 	right: 0;
 	width: 35%;
 	font-size: 16px;
+	z-index: 10;
 }
 
 li[data-priority-type="default"] {

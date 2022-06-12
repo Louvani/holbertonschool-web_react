@@ -18,9 +18,12 @@ class Notifications extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+
 	markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
-	}
+		return function () {
+			console.log(`Notification ${id} has been marked as read`);
+	 }
+  }
 
 	render() {
 		return (
@@ -28,9 +31,11 @@ class Notifications extends React.Component {
 				<div className='menuItem'>Your notifications</div>
 				{this.props.displayDrawer && (
 					<div className="Notifications">
-						<button style={styles} aria-label="close"
-						onClick={() => console.log('Close button has been clicked')}>
-							<img src={closeIcon} alt="close-icon" />
+						<button
+							style={styles} aria-label="close"
+							onClick={() => console.log('Close button has been clicked')}
+						>
+								<img src={closeIcon} alt="close-icon" />
 						</button>
 						<p>Here is the list of notifications</p>
 						<ul>
@@ -40,8 +45,8 @@ class Notifications extends React.Component {
 								this.props.listNotifications.map((notification) => {
 									return (
 										<NotificationItem
-											markAsRead={markAsRead}
-											id={item.id}
+											markAsRead={this.markAsRead}
+											id={notification.id}
 											key={notification.id}
 											type={notification.type}
 											value={notification.value}

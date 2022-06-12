@@ -15,14 +15,15 @@ class NotificationItem extends React.Component {
 				<li
 					data-priority-type={this.props.type}
 					dangerouslySetInnerHTML={this.props.html}
-					onClick={() => this.markAsRead(this.props.id)}
+					// onClick={alert('click'))}
+					onClick={this.markAsRead(this.props.id)}
 				/>
 			}
 			{
 				this.props.html === undefined &&
 				<li
 					data-priority-type={this.props.type}
-					onClick={() => this.markAsRead(this.props.id)}>
+					onClick={this.markAsRead(this.props.id)}>
 						{this.props.value}
 				</li>
 			}
