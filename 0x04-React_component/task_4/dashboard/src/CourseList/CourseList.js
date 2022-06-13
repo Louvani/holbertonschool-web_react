@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
+import Hoc from '../HOC/WithLogging';
 
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
@@ -7,7 +8,6 @@ import CourseShape from './CourseShape';
 import './CourseList.css';
 
 const CourseList = ({ listCourses }) => {
-	console.log(listCourses)
 	return (
 		<table id="CourseList" className="CourseList">
 			<thead>
@@ -42,4 +42,4 @@ CourseList.defaultProps = {
 	listCourses: [],
 }
 
-export default CourseList;
+export default Hoc(CourseList);

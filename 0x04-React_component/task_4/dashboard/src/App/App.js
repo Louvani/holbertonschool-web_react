@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Hoc from '../HOC/WithLogging';
 
 import './App.css';
 import Footer from '../Footer/Footer';
@@ -57,7 +58,7 @@ class App extends React.Component {
               <CourseList listCourses={listCourses} />
             </BodySectionWithMarginBottom>
             ) : (
-            <BodySectionWithMarginBottom title="Course list">
+            <BodySectionWithMarginBottom title="Log in to continue">
               <Login />
             </BodySectionWithMarginBottom>
             )}
@@ -82,4 +83,5 @@ App.defaultProps = {
   logOut: function () {},
 };
 
+App = Hoc(App);
 export default App;
