@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 function Hoc(HocComponent) {
   let componentName = '';
-  if (HocComponent) {
+  if (HocComponent.name) {
     componentName = HocComponent.name
   } else {
-    componentName = 'component'
+    componentName = 'Component'
   }
   return class HOC extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ function Hoc(HocComponent) {
       console.log(`Component ${componentName} is mounted`)
     }
     componentWillUnmount() {
-      console.log(`Component ${componentName}  is going to unmount`)
+      console.log(`Component ${componentName} is going to unmount`)
     }
     render(){
       return (
