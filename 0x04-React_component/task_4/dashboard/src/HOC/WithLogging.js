@@ -28,8 +28,7 @@ function Hoc(HocComponent) {
     }
     render(){
       return (
-        <HocComponent {...this.props}true
-        />
+        <HocComponent {...this.props}/>
       );
     }
   }
