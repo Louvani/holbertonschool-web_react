@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-class NotificationItem extends React.Component {
+class NotificationItem extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.markAsRead = this.props.markAsRead.bind(this);

@@ -26,6 +26,13 @@ class Notifications extends React.Component {
 	 }
   }
 
+	shouldComponentUpdate(nextProps) {
+    if (nextProps.listNotifications.length <= this.props.listNotifications.length)  {
+      return false;
+    }
+    return true;
+  }
+
 	render() {
 		return (
 			<Fragment>
