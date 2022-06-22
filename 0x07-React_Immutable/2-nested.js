@@ -1,6 +1,9 @@
+
+import { Map } from 'immutable';
+
 export default function accessImmutableObject(object, array) {
-  const map = Map(object);
-  const data = map.getIn(array);
+  const deepMap = Map(object);
+  const data = deepMap.getIn(array);
   if (typeof data !== 'string') return Map(data);
   return data;
 }
