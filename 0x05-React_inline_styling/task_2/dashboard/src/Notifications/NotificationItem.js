@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-import './Notifications.css'
+import { StyleSheet, css } from "aphrodite";
 
 class NotificationItem extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.markAsRead = this.props.markAsRead.bind(this);
+		this.typeStyle = css(this.props.type === "urgent" ? styles.urgent : styles.default);
 	}
 
 	render() {
@@ -15,15 +15,16 @@ class NotificationItem extends React.PureComponent {
 			{
 				this.props.html !== undefined &&
 				<li
+					className={this.typeStyle}
 					data-priority-type={this.props.type}
 					dangerouslySetInnerHTML={this.props.html}
-					// onClick={alert('click'))}
 					onClick={this.markAsRead(this.props.id)}
 				/>
 			}
 			{
 				this.props.html === undefined &&
 				<li
+				className={this.typeStyle}
 					data-priority-type={this.props.type}
 					onClick={this.markAsRead(this.props.id)}>
 						{this.props.value}
@@ -48,5 +49,14 @@ NotificationItem.defaultProps = {
 	markAsRead: function () {},
 };
 
+const styles = StyleSheet.create({
+  default: {
+    color: "blue",
+  },
+
+  urgent: {
+    color: "red",
+  },
+});
 
 export default NotificationItem;
