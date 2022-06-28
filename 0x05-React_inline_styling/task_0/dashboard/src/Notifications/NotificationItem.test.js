@@ -12,30 +12,6 @@ describe("Testing <NotificationItem /> Component", () => {
 
 	it("<NotificationItem /> is rendered without crashing", () => {
 		wrapper = shallow(<NotificationItem shouldRender />);
-
-		console.log(wrapper);
 		expect(wrapper).to.not.be.an("undefined");
 	});
-
-	// it("<NotificationItem /> render the correct HTML, by passing type and value props", () => {
-
-	// 	let props = {
-	// 		type: "default",
-	// 		value: "New resume",
-	// 		html: undefined
-	// 		id: 1,
-	// 	}
-	// 	let component = shallow(<NotificationItem {...props} />);
-	// 	expect(component.contains(<li data-priority-type={props.type} dangerouslySetInnerHTML={undefined}>New resume</li>)).to.equal(true);
-	// });
-
-	// it("<NotificationItem /> render the correct HTML, by passing dummy html props", () => {
-	// 	let props = {
-	// 		type: "urgent",
-	// 		html: { __html: "<p>test</p>"},
-	// 	}
-	// 	let component = shallow(<NotificationItem {...props} />);
-	// 	expect(component.contains(<li data-priority-type={props.type} dangerouslySetInnerHTML={props.html} />)).to.equal(true);
-	// });
-
 });

@@ -1,6 +1,6 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import Hoc from '../HOC/WithLogging';
+// import Hoc from '../HOC/WithLogging';
 
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
@@ -42,4 +42,4 @@ CourseList.defaultProps = {
 	listCourses: [],
 }
 
-export default Hoc(CourseList);
+export default CourseList;

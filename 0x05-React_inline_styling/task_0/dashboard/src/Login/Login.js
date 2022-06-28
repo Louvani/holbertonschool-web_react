@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './Login.css';
-import Hoc from '../HOC/WithLogging';
+// import Hoc from '../HOC/WithLogging';
 
 
 const Login = () => {
@@ -20,4 +20,4 @@ const Login = () => {
 	);
 }
 
-export default Hoc(Login);
+export default Login;

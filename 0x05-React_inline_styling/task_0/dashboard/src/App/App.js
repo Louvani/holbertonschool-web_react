@@ -83,5 +83,4 @@ App.defaultProps = {
   logOut: function () {},
 };
 
-App = Hoc(App);
 export default App;

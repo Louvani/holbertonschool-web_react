@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Hoc from '../HOC/WithLogging';
+// import Hoc from '../HOC/WithLogging';
 
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
@@ -80,4 +80,4 @@ Notifications.defaultProps = {
   displayDrawer: false,
 };
 
-export default Hoc(Notifications);
+export default Notifications;

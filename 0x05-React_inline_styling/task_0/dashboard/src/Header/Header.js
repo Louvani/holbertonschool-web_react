@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/holberton_logo.jpg';
-import Hoc from '../HOC/WithLogging';
+// import Hoc from '../HOC/WithLogging';
 
 import './Header.css';
 
@@ -12,4 +12,4 @@ function Header() {
     </header>
   )
 }
-export default Hoc(Header);
+export default Header;

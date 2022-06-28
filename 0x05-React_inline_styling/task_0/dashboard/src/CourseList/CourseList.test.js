@@ -8,19 +8,8 @@ import CourseListRow from './CourseListRow';
 configure({adapter: new Adapter()});
 
 describe("Testing the <CourseList /> Component", () => {
-
 	it("Test if <CourseList /> is rendered without crashing", () => {
-
-		let component = shallow(<CourseList shouldRender />);
-
-		expect(component.render()).to.not.be.an("undefined");
+		let wrapper = shallow(<CourseList shouldRender />);
+		expect(wrapper.exists()).equal(true);
 	});
-
-	it("Test if <CourseList /> is rendered without crashing", () => {
-
-		let component = shallow(<CourseList shouldRender />);
-
-		expect(component.find(CourseListRow)).to.have.lengthOf(2);
-	});
-
 });
