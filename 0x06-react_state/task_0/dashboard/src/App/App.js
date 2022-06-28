@@ -1,8 +1,9 @@
+// Import libraries
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from "aphrodite";
-// import Hoc from '../HOC/WithLogging';
 
+// Import components
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -11,7 +12,7 @@ import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
 
-
+// Import utilities
 import { getLatestNotification } from '../utils/utils';
 
 const listCourses = [
@@ -29,8 +30,19 @@ const listNotifications = [
 class App extends React.Component {
   constructor(props) {
     super(props);
+	  this.state = {displayDrawer: false};
+	  this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.onLogginOut = this.onLogginOut.bind(this);
   }
+
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
+  }
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
+  }
+
 
   onLogginOut(event) {
     if (event.ctrlKey && event.key === 'h') {
@@ -48,13 +60,19 @@ class App extends React.Component {
   }
 
   render() {
+    const { isLoggedIn, logOut } = this.props;
+    const { displayDrawer } = this.state;
     return (
       <Fragment>
-        <Notifications listNotifications={listNotifications} />
+        <Notifications listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+        />
         <div className={css(styles.app)}>
           <Header />
           <div className={css(styles.body)}>
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList listCourses={listCourses} />
             </BodySectionWithMarginBottom>

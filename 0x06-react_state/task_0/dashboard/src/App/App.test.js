@@ -61,3 +61,33 @@ describe('loggin prop is true', () => {
     expect(wrapper.find("CourseList")).length(1);
   });
 });
+
+describe('App satates', () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+  it("Has default state for displayDrawer false", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().displayDrawer).equal(false);
+  });
+
+  it("displayDrawer changes to true when calling handleDisplayDrawer", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().displayDrawer).equal(false);
+    const instance = wrapper.instance();
+    instance.handleDisplayDrawer();
+    expect(wrapper.state().displayDrawer).equal(true);
+  });
+
+  it("displayDrawer changes to false when calling handleHideDrawer", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().displayDrawer).equal(false);
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state().displayDrawer).equal(true);
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state().displayDrawer).equal(false);
+  });
+})
