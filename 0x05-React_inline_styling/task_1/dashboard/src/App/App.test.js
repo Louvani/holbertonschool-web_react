@@ -3,10 +3,17 @@ import { expect } from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
 import App from './App';
+import { StyleSheetTestUtils } from 'aphrodite';
 
 configure({adapter: new Adapter()});
 
 describe('Testing the <App /> Component', () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
   it('should not crash', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.exists()).equal(true);
@@ -36,6 +43,12 @@ describe('Testing the <App /> Component', () => {
 });
 
 describe('loggin prop is true', () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
   it("CourseList is not displayed with isLoggedIn false by default", () => {
     const wrapper = shallow(<App />);
     wrapper.update();

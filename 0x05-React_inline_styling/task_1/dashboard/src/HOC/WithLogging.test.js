@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 
 configure({adapter: new Adapter()});
 
-test('check console log was called when mounte and on unmounted with pure html', () => {
+test.skip('check console log was called when mounte and on unmounted with pure html', () => {
   console.log = jest.fn();
   const HocLoggin = Hoc(() => <p>test</p>);
   const wrapper = mount(<HocLoggin />);
@@ -19,7 +19,7 @@ test('check console log was called when mounte and on unmounted with pure html',
   jest.restoreAllMocks();
 });
 
-test('check with a login component the HOC exact console log output', () => {
+test.skip('check with a login component the HOC exact console log output', () => {
   console.log = jest.fn();
   const HocLoggin = Hoc(Login);
   const wrapper = mount(<HocLoggin />);

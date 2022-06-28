@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import './Notifications.css'
+
 class NotificationItem extends React.PureComponent {
 	constructor(props) {
 		super(props);

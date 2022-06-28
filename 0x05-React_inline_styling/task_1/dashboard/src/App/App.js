@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Hoc from '../HOC/WithLogging';
+import { StyleSheet, css } from "aphrodite";
+// import Hoc from '../HOC/WithLogging';
 
-import './App.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -10,6 +10,7 @@ import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+
 
 import { getLatestNotification } from '../utils/utils';
 
@@ -50,9 +51,9 @@ class App extends React.Component {
     return (
       <Fragment>
         <Notifications listNotifications={listNotifications} />
-        <div className="App">
+        <div className={css(styles.app)}>
           <Header />
-          <div className="App-body">
+          <div className={css(styles.body)}>
             {this.props.isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList listCourses={listCourses} />
@@ -66,7 +67,9 @@ class App extends React.Component {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam volutpat felis id tortor venenatis sollicitudin. Suspendisse at ipsum ac lectus semper ornare id finibus lorem. Praesent non mi eu diam pulvinar mollis. </p>
             </BodySection>
           </div>
-          <Footer />
+          <div className={css(styles.footer)}>
+            <Footer />
+          </div>
         </div>
       </Fragment>
     );
@@ -82,5 +85,38 @@ App.defaultProps = {
   isLoggedIn: false,
   logOut: function () {},
 };
+
+
+const cssVars = {
+  mainColor: "#e01d3f",
+};
+
+const styles = StyleSheet.create({
+  app: {
+    position: 'relative',
+    minHeight: '100vh',
+    padding: '2px 8px',
+  },
+
+  body: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '48px 32px 48px 32px',
+    justifyContent: "center",
+    borderBottom: `3px solid ${cssVars.mainColor}`,
+    borderTop: `3px solid ${cssVars.mainColor}`,
+    padding: '2px 8px',
+  },
+
+  footer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "center",
+    position: "absolute",
+    bottom: 0,
+    fontStyle: "italic",
+  },
+});
 
 export default App;

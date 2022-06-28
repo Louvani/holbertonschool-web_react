@@ -1,15 +1,14 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from "aphrodite";
 // import Hoc from '../HOC/WithLogging';
 
 import CourseListRow from './CourseListRow';
 import CourseShape from './CourseShape';
 
-import './CourseList.css';
-
 const CourseList = ({ listCourses }) => {
 	return (
-		<table id="CourseList" className="CourseList">
+		<table className={css(styles.list)}>
 			<thead>
 				<CourseListRow textFirstCell="Available courses" isHeader={true} />
 				<CourseListRow textFirstCell="Course name" textSecondCell="Credit" />
@@ -41,5 +40,19 @@ CourseList.prototypes = {
 CourseList.defaultProps = {
 	listCourses: [],
 }
+
+const cssVars = {
+  borderTableColor: "rgb(170, 170, 170);",
+};
+
+const styles = StyleSheet.create({
+  list: {
+    border: `1px solid ${cssVars.borderTableColor}`,
+    borderCollapse: "collapse",
+    width: "85%",
+    margin: "20px auto 0 auto",
+  }
+});
+
 
 export default CourseList;
