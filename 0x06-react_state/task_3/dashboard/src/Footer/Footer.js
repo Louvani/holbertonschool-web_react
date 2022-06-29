@@ -1,12 +1,21 @@
 import React from 'react';
 import { getFooterCopy, getFullYear } from '../utils/utils';
-// import Hoc from '../HOC/WithLogging';
+import AppContext from "../App/AppContext";
 
 function Footer() {
-  return (
-    <footer>
-        <p>Copyright {getFullYear()} - {getFooterCopy()}</p>
-    </footer>
+  return(
+    <AppContext.Consumer>
+      {(context) => {
+        return (
+          <div className="footer">
+            <p>
+              Copyright {getFullYear()} - {getFooterCopy(true)}
+            </p>
+            {context.user.isLoggedIn && <a href="#">Contact us</a>}
+          </div>
+        );
+      }}
+    </AppContext.Consumer>
   )
 }
 

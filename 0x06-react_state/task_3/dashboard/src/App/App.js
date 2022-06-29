@@ -24,7 +24,7 @@ const listCourses = [
   { id: 3, name: 'React', credit: 40 },
 ]
 
-const listNotifications = [
+const firstListNotifications = [
   {id: 1, type: 'default', value: 'New course available'},
   {id: 2, type: 'urgent', value: 'New resume available'},
   {id: 3, type: 'urgent', html: {__html: getLatestNotification()}}
@@ -38,10 +38,12 @@ class App extends React.Component {
     this.onLogginOut = this.onLogginOut.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
 	  this.state = {
       displayDrawer: false,
       user,
       logOut: this.logOut,
+      listNotifications: firstListNotifications,
     };
   }
 
@@ -59,9 +61,17 @@ class App extends React.Component {
       isLoggedIn: true,
     } })
   }
-  
+
   logOut() {
     this.setState({ user });
+  }
+
+  markNotificationAsRead(id) {
+    this.setState({
+      listNotifications: this.state.listNotifications.filter((notification) => {
+        return notification.id !== id;
+      }),
+    });
   }
 
   onLogginOut(event) {
@@ -81,15 +91,17 @@ class App extends React.Component {
 
   render() {
 
-	  const { displayDrawer, user, logOut } = this.state;
-    
+	  const { displayDrawer, user, logOut, listNotifications } = this.state;
+
     const value = { user, logOut };
     return (
       <AppContext.Provider value={value}>
-          <Notifications listNotifications={listNotifications}
+          <Notifications
+            listNotifications={this.state.listNotifications}
             displayDrawer={displayDrawer}
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
+            markNotificationAsRead={this.markNotificationAsRead}
           />
           <div className={css(styles.app)}>
             <Header />
