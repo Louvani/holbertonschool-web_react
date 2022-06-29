@@ -11,6 +11,7 @@ export function markAsAread(index) {
     index,
   };
 }
+export const boundMarkAsAread = (index) => dispatch(markAsAread(index));
 
 export function setNotificationFilter(filter) {
   return {
@@ -18,3 +19,5 @@ export function setNotificationFilter(filter) {
     filter,
   };
 }
+export const boundSetNotificationFilter = (filter) =>
+  dispatch(setNotificationFilter(filter));
