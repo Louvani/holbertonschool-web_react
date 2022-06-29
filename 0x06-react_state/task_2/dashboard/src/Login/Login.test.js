@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { shallow, configure } from 'enzyme';
+import { shallow, configure, mount } from 'enzyme';
 import Login from './Login';
 import { StyleSheetTestUtils } from 'aphrodite';
 

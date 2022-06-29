@@ -1,9 +1,10 @@
 import React from 'react';
 import { expect } from 'chai';
 import Adapter from 'enzyme-adapter-react-16';
-import { shallow, configure } from 'enzyme';
+import { shallow, configure, mount } from 'enzyme';
 import App from './App';
 import { StyleSheetTestUtils } from 'aphrodite';
+import AppContext, { user, logOut } from './AppContext.js';
 
 configure({adapter: new Adapter()});
 
@@ -62,7 +63,7 @@ describe('loggin prop is true', () => {
   });
 });
 
-describe('App satates', () => {
+describe('App states', () => {
   beforeEach(() => {
     StyleSheetTestUtils.suppressStyleInjection();
   });
@@ -89,5 +90,45 @@ describe('App satates', () => {
     expect(wrapper.state().displayDrawer).equal(true);
     wrapper.instance().handleHideDrawer();
     expect(wrapper.state().displayDrawer).equal(false);
+  });
+
+  it("test to verify that the logIn function updates the state correctly", () => {
+    const wrapper = mount(
+      <AppContext.Provider value={{ user, logOut }}>
+        <App />
+      </AppContext.Provider>
+    );
+
+    const loggedUser = {
+      email: "paula@louvani.com",
+      password: "123456789",
+      isLoggedIn: true,
+    };
+
+    const instance = wrapper.instance();
+    expect(wrapper.state().user).equal(user);
+    instance.logIn(loggedUser.email, loggedUser.password);
+    expect(wrapper.state().user).contains(loggedUser);
+  });
+
+  it("test to verify that the logOut function updates the state correctly", () => {
+    const wrapper = mount(
+      <AppContext.Provider value={{ user, logOut }}>
+        <App />
+      </AppContext.Provider>
+    );
+
+    const loggedUser = {
+      email: "paula@louvani.com",
+      password: "123456789",
+      isLoggedIn: true,
+    };
+
+    const instance = wrapper.instance();
+    expect(wrapper.state().user).equal(user);
+    instance.logIn(loggedUser.email, loggedUser.password);
+    expect(wrapper.state().user).contains(loggedUser);
+    instance.logOut();
+    expect(wrapper.state().user).equal(user);
   });
 })
