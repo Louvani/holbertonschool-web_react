@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from "aphrodite";
 
 const CourseListRow = ({isHeader, textFirstCell, textSecondCell}) => {
+	const [checkboxCheck, setCheckboxCheck] = React.useState(false);
 	const style = {
 		backgroundColor: '',
 	}
@@ -11,12 +12,14 @@ const CourseListRow = ({isHeader, textFirstCell, textSecondCell}) => {
     isHeader ? styles.CourseListTh : styles.CourseListTd
   );
 
+	const checkToggle = () => setCheckboxCheck(!checkboxCheck);
+
 	if (isHeader) {
 		style.backgroundColor = '#deb5b545';
 		if (textSecondCell == null) {
 			return (
 				<tr style={style}>
-					<th colSpan={2} className={css(styles.CourseListThSpan2)}>{textFirstCell}</th>
+					<th colSpan={2} className={css(styles.CourseListThSpan2)} >{textFirstCell}</th>
 				</tr>
 			);
 		} else {
@@ -30,8 +33,10 @@ const CourseListRow = ({isHeader, textFirstCell, textSecondCell}) => {
 	}
 	style.backgroundColor = '#f5f5f5ab';
 	return (
-		<tr style={style}>
-			<td className={tableItemStyle}>{textFirstCell}</td>
+		<tr className={css(checkboxCheck ? styles.rowChecked : '')}>
+			<td className={tableItemStyle}>
+				<input type="checkbox" onClick={checkToggle}/>{textFirstCell}
+			</td>
 			<td className={tableItemStyle}>{textSecondCell}</td>
 		</tr>
 	);
@@ -67,6 +72,10 @@ const styles = StyleSheet.create({
   CourseListTd: {
     textAlign: "left",
   },
+
+	rowChecked: {
+		backgroundColor: '#e6e4e4'
+	  },
 });
 
 export default CourseListRow;
