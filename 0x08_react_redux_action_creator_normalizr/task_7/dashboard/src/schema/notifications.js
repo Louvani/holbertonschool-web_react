@@ -1,4 +1,4 @@
-import * as notificationsData from '../../notifications.json';
+import * as notificationsData from '../notifications.json';
 import { normalize, schema } from "normalizr";
 // const { normalize, schema } = require("normalizr");
 // const notificationsData = require('../../notifications.json')
